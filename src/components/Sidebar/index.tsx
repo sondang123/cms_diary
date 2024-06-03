@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import SidebarLinkGroup from "./SidebarLinkGroup";
-import { cn } from "~/lib/utils";
+import { cn } from "../../lib/utils";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -66,7 +66,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex items-center justify-between p-4 pb-0">
         <NavLink to="/" className="px-3">
-          <p className="typo-s36-w700">DIARY CMS</p>
+          <p className="typo-s36-w700 font-manrope">DIARY CMS</p>
         </NavLink>
 
         <button
@@ -178,8 +178,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               to="/"
                               className={({ isActive }) =>
                                 cn(
-                                  "group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white",
-                                  isActive && "text-neutral-200 bg-neutral-800"
+                                  "group relative flex items-center gap-2.5 rounded-3 px-4 typo-s14-w400 duration-300 ease-in-out py-3",
+                                  isActive && "text-neutral-700 bg-neutral-300"
                                 )
                               }
                             >

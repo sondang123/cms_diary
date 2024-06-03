@@ -130,6 +130,21 @@ export default {
         550: "34.375rem",
         300: "18.75rem",
       },
+      fontFamily: {
+        manrope: ["Manrope", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+        1.5: "6px",
+        2: "8px",
+        2.5: "10px",
+        3: "12px",
+        4: "16px",
+        7.5: "30px",
+      },
     },
   },
   plugins: [
