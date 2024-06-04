@@ -2,8 +2,13 @@ import { useEffect, useState } from "react";
 
 import { Route, Routes, useLocation } from "react-router-dom";
 import Loader from "./common/Loader";
-import PageTitle from "./components/PageTitle";
 import { Dashboard } from "./pages/Dashboard";
+import { ThemeScreen } from "./pages/ThemeScreen";
+import { IconModScreen } from "./pages/IconMoodScreen";
+import { AddThemeScreen } from "./pages/ThemeScreen/AddThemeScreen";
+import { CategoryScreen } from "./pages/CategoryScreen";
+import { AddIconMoodScreen } from "./pages/IconMoodScreen/AddIconMoodScreen";
+import { EditIconMoodScreen } from "./pages/IconMoodScreen/EditIconMoodScreen";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -21,34 +26,13 @@ function App() {
   ) : (
     <>
       <Routes>
-        <Route
-          index
-          element={
-            <>
-              <PageTitle title="eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Dashboard />
-            </>
-          }
-        />
-
-        {/* <Route
-          path="/auth/signin"
-          element={
-            <>
-              <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <SignIn />
-            </>
-          }
-        /> */}
-        {/* <Route
-          path="/auth/signup"
-          element={
-            <>
-              <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <SignUp />
-            </>
-          }
-        /> */}
+        <Route index element={<Dashboard />} />
+        <Route path="/theme" element={<ThemeScreen />} />
+        <Route path="/theme/add" element={<AddThemeScreen />} />
+        <Route path="/icon-mood/add" element={<AddIconMoodScreen />} />
+        <Route path="/icon-mood/edit/:id" element={<EditIconMoodScreen />} />
+        <Route path="/icon-mood" element={<IconModScreen />} />
+        <Route path="/category/*" element={<CategoryScreen />} />
       </Routes>
     </>
   );

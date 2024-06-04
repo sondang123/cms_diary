@@ -2,9 +2,104 @@
 import plugin from "tailwindcss/plugin";
 
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: ["class"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
+  prefix: "",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+          main: "#3F9DBB",
+          main_light: "#E1F5FB",
+          2: "#83BF6E",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        neutral: {
+          1: "#FCFCFC",
+          2: "#F4F4F4",
+          3: "#EFEFEF",
+          4: "#6F767E",
+          7: "#1A1D1F",
+          100: "#F3F4F6",
+          200: "#E5E7EB",
+          800: "#1F2937",
+          900: "#111827",
+        },
+        shades: {
+          475: "#9A9FA5",
+          440: "rgba(111, 118, 126, 0.40)",
+        },
+        ui: {
+          border: "#D0D5DD",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+        1.5: "6px",
+        2: "8px",
+        2.5: "10px",
+        3: "12px",
+        4: "16px",
+        7.5: "30px",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
       spacing: {
         4.5: "1.125rem",
         5.5: "1.375rem",
@@ -134,17 +229,6 @@ export default {
         manrope: ["Manrope", "sans-serif"],
         inter: ["Inter", "sans-serif"],
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-        1.5: "6px",
-        2: "8px",
-        2.5: "10px",
-        3: "12px",
-        4: "16px",
-        7.5: "30px",
-      },
     },
   },
   plugins: [
@@ -244,6 +328,10 @@ export default {
           fontSize: "16px",
           fontWeight: "400",
         },
+        ".typo-s15-w700": {
+          fontSize: "15px",
+          fontWeight: "700",
+        },
         ".typo-s14-w700": {
           fontSize: "14px",
           fontWeight: "700",
@@ -258,6 +346,18 @@ export default {
         },
         ".typo-s14-w400": {
           fontSize: "14px",
+          fontWeight: "400",
+        },
+        ".typo-s13-w600": {
+          fontSize: "13px",
+          fontWeight: "600",
+        },
+        ".typo-s13-w500": {
+          fontSize: "13px",
+          fontWeight: "500",
+        },
+        ".typo-s13-w400": {
+          fontSize: "13px",
           fontWeight: "400",
         },
         ".typo-s12-w700": {
