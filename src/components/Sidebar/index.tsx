@@ -140,7 +140,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                   </svg>
                                 ) : null}
 
-                                <p className="typo-s14-w500"> {item?.name}</p>
+                                <p className="typo-s14-w500 text-ui-textSidebar">
+                                  {item?.name}
+                                </p>
                                 <svg
                                   className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
                                     open && "rotate-180"
@@ -165,7 +167,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                   !open && "hidden"
                                 }`}
                               >
-                                <ul className="flex flex-col gap-2.5 pl-6">
+                                <ul className="flex flex-col gap-2.5 pl-10">
                                   {item?.subMenu?.map((itemSub, indexSub) => (
                                     <li key={indexSub}>
                                       <NavLink
@@ -179,7 +181,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                       >
                                         <p
                                           className={cn(
-                                            "typo-s14-w500",
+                                            "typo-s14-w500 text-ui-textSidebar",
                                             (pathname === itemSub?.path ||
                                               pathname?.includes(
                                                 itemSub?.path
@@ -229,7 +231,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                         </svg>
                         <p
                           className={cn(
-                            "typo-s14-w500",
+                            "typo-s14-w500 text-ui-textSidebar",
                             (pathname === item?.path ||
                               pathname?.includes(item?.path + "/")) &&
                               "text-primary-main"

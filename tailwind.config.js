@@ -73,6 +73,8 @@ export default {
         },
         ui: {
           border: "#D0D5DD",
+          textSidebar: "#6F767E",
+          textTitle: "#101828",
         },
       },
       borderRadius: {

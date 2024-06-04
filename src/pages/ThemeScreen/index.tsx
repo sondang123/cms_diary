@@ -5,7 +5,7 @@ export const ThemeScreen: React.FC = () => {
   return (
     <DefaultLayout>
       <div>
-        <p className="typo-s36-w700">Theme</p>
+        <p className="typo-s36-w700 text-ui-textTitle">Theme</p>
         <TableTheme />
       </div>
     </DefaultLayout>
