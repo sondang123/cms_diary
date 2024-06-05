@@ -149,7 +149,7 @@ export const TableTheme: React.FC<IAppProps> = () => {
         elementHeaderRight={
           <div className="flex gap-2">
             <ButtonFullBg className="rounded-2 bg-primary-main_light text-primary-main py-2">
-              Down File mẫu
+              Export sample file
             </ButtonFullBg>
             <ButtonFullBg
               className="rounded-2 bg-primary-main py-2"
