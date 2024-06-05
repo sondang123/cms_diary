@@ -23,7 +23,12 @@ const formSchema = z.object({
   name: z.string().min(2, {
     message: "name must be at least 2 characters.",
   }),
-  icons: z.array(z.string()),
+  happy: z.instanceof(File, { message: "required" }),
+  fun: z.instanceof(File, { message: "required" }),
+  normal: z.instanceof(File, { message: "required" }),
+  sad: z.instanceof(File, { message: "required" }),
+  cry: z.instanceof(File, { message: "required" }),
+  all: z.instanceof(File, { message: "required" }),
 });
 export const AddIconMoodScreen: React.FC<IProps> = ({
   title = "Add Icon Mood",
@@ -33,7 +38,6 @@ export const AddIconMoodScreen: React.FC<IProps> = ({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      icons: [],
     },
   });
 
@@ -95,12 +99,126 @@ export const AddIconMoodScreen: React.FC<IProps> = ({
                     Upload Image
                   </p>
                   <div className="flex items-center flex-wrap gap-6 ">
-                    <CellInputImageIconMood title="Mood-happy" />
-                    <CellInputImageIconMood title="Mood-happy" />
-                    <CellInputImageIconMood title="Mood-happy" />
-                    <CellInputImageIconMood title="Mood-happy" />
-                    <CellInputImageIconMood title="Mood-happy" />
-                    <CellInputImageIconMood title="Mood-happy" />
+                    <FormField
+                      control={form.control}
+                      name={"happy"}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <div className="w-[100px]">
+                              <CellInputImageIconMood
+                                title="Mood-happy"
+                                value={field.value}
+                                handleChange={(e) => {
+                                  field.onChange(e);
+                                }}
+                              />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name={"fun"}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <div className="w-[100px]">
+                              <CellInputImageIconMood
+                                title="Mood-fun"
+                                value={field.value}
+                                handleChange={(e) => {
+                                  field.onChange(e);
+                                }}
+                              />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name={"normal"}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <div className="w-[100px]">
+                              <CellInputImageIconMood
+                                title="Mood-normal"
+                                value={field.value}
+                                handleChange={(e) => {
+                                  field.onChange(e);
+                                }}
+                              />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name={"sad"}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <div className="w-[100px]">
+                              <CellInputImageIconMood
+                                title="Mood-sad"
+                                value={field.value}
+                                handleChange={(e) => {
+                                  field.onChange(e);
+                                }}
+                              />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name={"cry"}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <div className="w-[100px]">
+                              <CellInputImageIconMood
+                                title="Mood-cry"
+                                value={field.value}
+                                handleChange={(e) => {
+                                  field.onChange(e);
+                                }}
+                              />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name={"all"}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <div className="w-[100px]">
+                              <CellInputImageIconMood
+                                title="Mood-all"
+                                value={field.value}
+                                handleChange={(e) => {
+                                  field.onChange(e);
+                                }}
+                              />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                   </div>
                 </div>
                 <div className="flex justify-end gap-2">

@@ -29,3 +29,9 @@ export interface TypeTheme {
   header_icon?: string;
   divider?: string;
 }
+
+export interface TypeFieldTheme {
+  label?: string;
+  name: string | undefined;
+  placeholder?: string;
+}

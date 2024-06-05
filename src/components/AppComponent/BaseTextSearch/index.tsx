@@ -16,7 +16,7 @@ export const BaseTextSearch: React.FC<InputProps & IProps> = ({
   ...props
 }) => {
   return (
-    <div className="flex items-center rounded-lg border border-main-neutral-200 bg-neutral-2 px-3 focus-within:ring-1 focus-within:ring-main-neutral-600">
+    <div className="flex items-center rounded-lg border border-main-neutral-200 bg-neutral-2 px-3 focus-within:ring-1 focus-within:ring-neutral-600">
       <Search className="mr-1 h-6 w-6 shrink-0 text-main-neutral-400 opacity-50" />
       <Input
         type={type}

@@ -9,6 +9,8 @@ import { AddThemeScreen } from "./pages/ThemeScreen/AddThemeScreen";
 import { CategoryScreen } from "./pages/CategoryScreen";
 import { AddIconMoodScreen } from "./pages/IconMoodScreen/AddIconMoodScreen";
 import { EditIconMoodScreen } from "./pages/IconMoodScreen/EditIconMoodScreen";
+import { BackgroundScreenRouter } from "./pages/BackgroundScreen";
+import { StickerScreenRouter } from "./pages/StickerScreen";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -29,10 +31,16 @@ function App() {
         <Route index element={<Dashboard />} />
         <Route path="/theme" element={<ThemeScreen />} />
         <Route path="/theme/add" element={<AddThemeScreen />} />
+        <Route
+          path="/theme/edit/:id"
+          element={<AddThemeScreen title="Edit Theme" isEdit={true} />}
+        />
         <Route path="/icon-mood/add" element={<AddIconMoodScreen />} />
         <Route path="/icon-mood/edit/:id" element={<EditIconMoodScreen />} />
         <Route path="/icon-mood" element={<IconModScreen />} />
         <Route path="/category/*" element={<CategoryScreen />} />
+        <Route path="/background/*" element={<BackgroundScreenRouter />} />
+        <Route path="/sticker/*" element={<StickerScreenRouter />} />
       </Routes>
     </>
   );

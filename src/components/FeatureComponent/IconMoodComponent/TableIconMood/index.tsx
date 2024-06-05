@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { AppConfirmDelete } from "~/components/AppComponent/AppConfirm/AppConfirmDelete";
 import { ButtonFullBg } from "~/components/AppComponent/AppButton/ButtonFullBg";
 import { AppData } from "~/const/AppData";
-
+import Zoom from "react-medium-image-zoom";
 import { utils } from "~/utils";
 import { AppPagination } from "~/components/AppComponent/AppPagination";
 import { DataTableTheme } from "../../ThemeComponent/TableTheme/DataTableTheme";
@@ -73,19 +73,21 @@ export const TableIconMood: React.FC<IAppProps> = () => {
         accessorKey: "wall_background",
         header: () => (
           <div className="typo-s13-w600 text-neutral-4 text-center">
-            Image Icon Mood{" "}
+            Image Icon Mood
           </div>
         ),
         cell: ({ row }) => {
           return (
             <div className="flex gap-2">
               {row?.original?.icons?.map((item, index) => (
-                <img
-                  key={index}
-                  src={item}
-                  alt={`${row?.id}_wall_background`}
-                  className="object-contain rounded-3"
-                />
+                <Zoom>
+                  <img
+                    key={index}
+                    src={item}
+                    alt={`${row?.id}_wall_background`}
+                    className="object-contain rounded-3"
+                  />
+                </Zoom>
               ))}
             </div>
           );

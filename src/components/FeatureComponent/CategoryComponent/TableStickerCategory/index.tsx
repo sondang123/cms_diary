@@ -3,21 +3,20 @@ import { type ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "~/components/ui/checkbox";
 import { AppResource } from "~/const/AppResource";
 import { useNavigate } from "react-router-dom";
-
 import { AppConfirmDelete } from "~/components/AppComponent/AppConfirm/AppConfirmDelete";
 import { ButtonFullBg } from "~/components/AppComponent/AppButton/ButtonFullBg";
 import { AppData } from "~/const/AppData";
-
+import Zoom from "react-medium-image-zoom";
 import { utils } from "~/utils";
 import { AppPagination } from "~/components/AppComponent/AppPagination";
 import { DataTableTheme } from "../../ThemeComponent/TableTheme/DataTableTheme";
-import { TypeCategory } from "~/const/Type/TypeCategory";
+import { TypeCategorySticker } from "~/const/Type/TypeCategory";
 
 interface IAppProps {}
 
-export const TableBackgroundCategory: React.FC<IAppProps> = () => {
+export const TableStickerCategory: React.FC<IAppProps> = () => {
   const navigate = useNavigate();
-  const columnTable: ColumnDef<TypeCategory>[] = useMemo(() => {
+  const columnTable: ColumnDef<TypeCategorySticker>[] = useMemo(() => {
     return [
       {
         accessorKey: "category_id",
@@ -60,6 +59,16 @@ export const TableBackgroundCategory: React.FC<IAppProps> = () => {
         cell: ({ row }) => {
           return (
             <div className="flex items-center gap-5">
+              {row?.original?.category_img ? (
+                <Zoom>
+                  <img
+                    src={row?.original?.category_img}
+                    alt="category_img"
+                    width={50}
+                    className="object-contain rounded-3"
+                  />
+                </Zoom>
+              ) : null}
               <p className="typo-s15-w700 text-neutral-7">
                 {row?.original?.name}
               </p>
@@ -77,7 +86,7 @@ export const TableBackgroundCategory: React.FC<IAppProps> = () => {
             <div className="">
               <div className="flex items-center gap-5">
                 <p className="typo-s15-w700 text-neutral-7">
-                  {row?.original?.background?.length ?? 0}
+                  {row?.original?.stickers?.length ?? 0}
                 </p>
               </div>
             </div>
@@ -132,7 +141,7 @@ export const TableBackgroundCategory: React.FC<IAppProps> = () => {
     <div className="p-3 bg-white mt-6 rounded-2">
       <DataTableTheme
         columns={columnTable}
-        data={AppData.dataFakeBackgroundCategory?.data ?? []}
+        data={AppData?.dataFakeBackgroundSticker?.data ?? []}
         elementHeaderRight={
           <div className="flex gap-2">
             <ButtonFullBg

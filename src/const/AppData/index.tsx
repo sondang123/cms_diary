@@ -162,4 +162,90 @@ export const AppData = {
       ],
     },
   ],
+
+  dataFakeBackgroundCategory: {
+    data: [
+      {
+        category_id: 1,
+        name: "Spring Background",
+        category_img: AppResource.images.img_demo,
+        background: [
+          {
+            id: 1,
+            background_img: AppResource.images.img_demo,
+            is_premium: true,
+            toolbar_color: "#FFFFFF",
+            icon_color: "#FFFFFF",
+            text_color: "#FFFFFF",
+            icon_toolbar_color: "#FFFFFF",
+          },
+        ],
+      },
+      {
+        category_id: 2,
+        name: "Spring Background",
+        category_img: AppResource.images.img_demo,
+        background: [
+          {
+            id: 1,
+            background_img: AppResource.images.img_demo,
+            is_premium: true,
+            toolbar_color: "#FFFFFF",
+            icon_color: "#FFFFFF",
+            text_color: "#FFFFFF",
+            icon_toolbar_color: "#FFFFFF",
+          },
+        ],
+      },
+    ],
+  },
+  dataFakeBackgroundSticker: {
+    data: [
+      {
+        category_id: 1,
+        name: "Ball sticker",
+        category_img: AppResource.images.img_demo,
+        stickers: [
+          {
+            id: 1,
+            is_premium: true,
+            sticker_img: AppResource.images.img_demo,
+          },
+        ],
+      },
+      {
+        category_id: 2,
+        name: "Ball sticker",
+        category_img: AppResource.images.img_demo,
+        stickers: [
+          {
+            id: 2,
+            is_premium: true,
+            sticker_img: AppResource.images.img_demo,
+          },
+        ],
+      },
+    ],
+  },
+
+  dataTypeTheme: [
+    {
+      label: "Drark",
+      value: "Drark",
+    },
+    {
+      label: "Light",
+      value: "Light",
+    },
+  ],
+  dataDropdownTrueFalse: [
+    {
+      label: "true",
+      value: "true",
+    },
+    {
+      label: "false",
+      value: "false",
+    },
+  ],
 };

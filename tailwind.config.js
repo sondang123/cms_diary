@@ -62,8 +62,10 @@ export default {
           3: "#EFEFEF",
           4: "#6F767E",
           7: "#1A1D1F",
+          50: "#F9FAFB",
           100: "#F3F4F6",
           200: "#E5E7EB",
+          300: "#D0D5DD",
           800: "#1F2937",
           900: "#111827",
         },
@@ -75,6 +77,7 @@ export default {
           border: "#D0D5DD",
           textSidebar: "#6F767E",
           textTitle: "#101828",
+          text02: "#667085",
         },
       },
       borderRadius: {
@@ -86,6 +89,7 @@ export default {
         2.5: "10px",
         3: "12px",
         4: "16px",
+        5: "24px",
         7.5: "30px",
       },
       keyframes: {

@@ -11,16 +11,17 @@ import { AppData } from "~/const/AppData";
 import { utils } from "~/utils";
 import { AppPagination } from "~/components/AppComponent/AppPagination";
 import { DataTableTheme } from "../../ThemeComponent/TableTheme/DataTableTheme";
-import { TypeCategory } from "~/const/Type/TypeCategory";
+import { TypeBackground } from "~/const/Type/TypeCategory";
+import { Switch } from "~/components/ui/switch";
 
 interface IAppProps {}
 
-export const TableBackgroundCategory: React.FC<IAppProps> = () => {
+export const TableBackground: React.FC<IAppProps> = () => {
   const navigate = useNavigate();
-  const columnTable: ColumnDef<TypeCategory>[] = useMemo(() => {
+  const columnTable: ColumnDef<TypeBackground>[] = useMemo(() => {
     return [
       {
-        accessorKey: "category_id",
+        accessorKey: "id",
         header: ({ table }) => (
           <div className="typo-s13-w600 text-left text-neutral-4 flex items-center">
             <Checkbox
@@ -34,7 +35,7 @@ export const TableBackgroundCategory: React.FC<IAppProps> = () => {
               aria-label="Select all"
               className="mr-4"
             />
-            ID Category
+            ID Background
           </div>
         ),
         cell: ({ row }) => {
@@ -47,7 +48,7 @@ export const TableBackgroundCategory: React.FC<IAppProps> = () => {
                 className=""
               />
               <p className="typo-s13-w600 text-shades-475">
-                {row?.original?.category_id}
+                {row?.original?.id}
               </p>
             </div>
           );
@@ -55,7 +56,9 @@ export const TableBackgroundCategory: React.FC<IAppProps> = () => {
       },
       {
         accessorKey: "name",
-        header: () => <div className="typo-s13-w600  text-neutral-4">Name</div>,
+        header: () => (
+          <div className="typo-s13-w600  text-neutral-4">Category</div>
+        ),
 
         cell: ({ row }) => {
           return (
@@ -70,7 +73,7 @@ export const TableBackgroundCategory: React.FC<IAppProps> = () => {
       {
         accessorKey: "wall_background",
         header: () => (
-          <div className="typo-s13-w600 text-neutral-4">Amount</div>
+          <div className="typo-s13-w600 text-neutral-4">Image Background</div>
         ),
         cell: ({ row }) => {
           return (
@@ -80,6 +83,34 @@ export const TableBackgroundCategory: React.FC<IAppProps> = () => {
                   {row?.original?.background?.length ?? 0}
                 </p>
               </div>
+            </div>
+          );
+        },
+      },
+      {
+        accessorKey: "wall_background",
+        header: () => (
+          <div className="typo-s13-w600 text-neutral-4">Premium</div>
+        ),
+        cell: () => {
+          return (
+            <div>
+              <div className="flex items-center gap-5">
+                <Switch className="data-[state=checked]:bg-primary-main" />
+              </div>
+            </div>
+          );
+        },
+      },
+      {
+        accessorKey: "wall_background",
+        header: () => (
+          <div className="typo-s13-w600 text-neutral-4">Color Code</div>
+        ),
+        cell: () => {
+          return (
+            <div>
+              <p>View</p>
             </div>
           );
         },
@@ -111,7 +142,7 @@ export const TableBackgroundCategory: React.FC<IAppProps> = () => {
                 alt=""
                 className="w-[20px] cursor-pointer hover:opacity-80"
                 onClick={() => {
-                  navigate(`edit/${row?.original.category_id}`);
+                  navigate(`edit/${row?.original.id}`);
                 }}
               />
               <AppConfirmDelete title="Delete Config">
@@ -141,7 +172,7 @@ export const TableBackgroundCategory: React.FC<IAppProps> = () => {
                 navigate("add");
               }}
             >
-              Add Category
+              Add Background
             </ButtonFullBg>
           </div>
         }

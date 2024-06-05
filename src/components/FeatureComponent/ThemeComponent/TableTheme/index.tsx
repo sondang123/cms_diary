@@ -10,6 +10,7 @@ import { AppData } from "~/const/AppData";
 import { TypeTheme } from "~/const/Type/TypeTheme";
 import { utils } from "~/utils";
 import { AppPagination } from "~/components/AppComponent/AppPagination";
+import Zoom from "react-medium-image-zoom";
 
 interface IAppProps {}
 
@@ -61,12 +62,14 @@ export const TableTheme: React.FC<IAppProps> = () => {
           return (
             <div className="flex items-center gap-5">
               {row?.original?.img_preview ? (
-                <img
-                  src={row?.original?.img_preview}
-                  alt="img_preview"
-                  width={50}
-                  className="object-contain rounded-3"
-                />
+                <Zoom>
+                  <img
+                    src={row?.original?.img_preview}
+                    alt="img_preview"
+                    width={50}
+                    className="object-contain rounded-3"
+                  />
+                </Zoom>
               ) : null}
               <p className="typo-s15-w700 text-neutral-7">
                 {row?.original?.name}
@@ -83,11 +86,13 @@ export const TableTheme: React.FC<IAppProps> = () => {
         cell: ({ row }) => {
           return (
             <div className="">
-              <img
-                src={row.original.wall_background}
-                alt={`${row?.id}_wall_background`}
-                className="object-contain rounded-3"
-              />
+              <Zoom>
+                <img
+                  src={row.original.wall_background}
+                  alt={`${row?.id}_wall_background`}
+                  className="object-contain rounded-3"
+                />
+              </Zoom>
             </div>
           );
         },
@@ -144,12 +149,20 @@ export const TableTheme: React.FC<IAppProps> = () => {
         elementHeaderRight={
           <div className="flex gap-2">
             <ButtonFullBg className="rounded-2 bg-primary-main_light text-primary-main py-2">
-              View color code
+              Down File mẫu
             </ButtonFullBg>
             <ButtonFullBg
               className="rounded-2 bg-primary-main py-2"
               onClick={() => {
-                navigate("/theme/add");
+                navigate("add");
+              }}
+            >
+              Import File
+            </ButtonFullBg>
+            <ButtonFullBg
+              className="rounded-2 bg-primary-main py-2"
+              onClick={() => {
+                navigate("add");
               }}
             >
               Add Theme
