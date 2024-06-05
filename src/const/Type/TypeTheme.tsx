@@ -34,4 +34,5 @@ export interface TypeFieldTheme {
   label?: string;
   name: string | undefined;
   placeholder?: string;
+  type?: string | undefined;
 }

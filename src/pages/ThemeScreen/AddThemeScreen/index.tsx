@@ -24,116 +24,139 @@ const dataField: TypeFieldTheme[] = [
     label: "primary",
     name: "primary",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "gradientStart",
     name: "gradient_start",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "gradientEnd",
     name: "gradient_end",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "onPrimary",
     name: "on_primary",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "background",
     name: "background",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "glass",
     name: "glass",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "glassOpacity",
     name: "glass_opacity",
-    placeholder: "Input color code",
+    type: "text",
+    placeholder: "enter value",
   },
   {
     label: "recordDialog",
     name: "record_dialog",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "recordContainer",
     name: "record_container",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "recordOnContainer",
     name: "record_on_container",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "recordHeading",
     name: "record_heading",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "recordBodyText",
     name: "record_body_text",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "Neutral 1",
     name: "neutral_1",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "Neutral 2",
     name: "neutral_2",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "Neutral 3",
     name: "neutral_3",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "Neutral 3",
     name: "neutral_3",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "Neutral 4",
     name: "neutral_4",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "Neutral 5",
     name: "neutral_5",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "Neutral 6",
     name: "neutral_6",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "Neutral 7",
     name: "neutral_7",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "Neutral 8",
     name: "neutral_8",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "headerIcon",
     name: "header_icon",
     placeholder: "Input color code",
+    type: "color",
   },
   {
     label: "divider",
     name: "divider",
     placeholder: "Input color code",
+    type: "color",
   },
 ];
 const transformedObject = dataField.reduce(
@@ -378,11 +401,13 @@ export const AddThemeScreen: React.FC<IProps> = ({
                                     placeholder={item?.placeholder}
                                     {...field}
                                   />
-                                  <Input
-                                    type="color"
-                                    className="w-[50px] p-0 bg-white border-0 cursor-pointer"
-                                    {...field}
-                                  />
+                                  {item?.type === "color" ? (
+                                    <Input
+                                      type="color"
+                                      className="w-[50px] p-0 bg-white border-0 cursor-pointer"
+                                      {...field}
+                                    />
+                                  ) : null}
                                 </div>
                               </FormControl>
                               <FormMessage />
