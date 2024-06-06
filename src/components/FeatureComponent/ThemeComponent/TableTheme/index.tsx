@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { type ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "~/components/ui/checkbox";
 import { AppResource } from "~/const/AppResource";
@@ -12,8 +12,9 @@ import { utils } from "~/utils";
 import { AppPagination } from "~/components/AppComponent/AppPagination";
 import Zoom from "react-medium-image-zoom";
 import ExcelJS from "exceljs";
-import { Label } from "~/components/ui/label";
+import * as XLSX from "xlsx";
 import { Input } from "~/components/ui/input";
+import { DialogTableThemeImport } from "../DialogTableThemeImport";
 interface IAppProps {}
 
 export const TableTheme: React.FC<IAppProps> = () => {
@@ -165,134 +166,7 @@ export const TableTheme: React.FC<IAppProps> = () => {
     };
 
     sheet.mergeCells("A3", "N3");
-    const columns = [
-      {
-        header: "Name",
-        key: "name",
-        width: 20,
-      },
-      {
-        header: "isLight",
-        key: "is_light",
-        width: 18,
-      },
-      {
-        header: "isPremiun",
-        key: "is_premium",
-        width: 18,
-      },
-      {
-        header: "primary",
-        key: "primary",
-        width: 18,
-      },
-      {
-        header: "gradientStart",
-        key: "gradient_start",
-        width: 18,
-      },
-      {
-        header: "gradientEnd",
-        key: "gradient_end",
-        width: 18,
-      },
-      {
-        header: "onPrimary",
-        key: "on_primary",
-        width: 18,
-      },
-      {
-        header: "background",
-        key: "background",
-        width: 18,
-      },
-      {
-        header: "glass",
-        key: "glass",
-        width: 18,
-      },
-      {
-        header: "glassOpacity",
-        key: "glass_opacity",
-        width: 18,
-      },
-      {
-        header: "recordDialog",
-        key: "record_dialog",
-        width: 18,
-      },
-      {
-        header: "recordContainer",
-        key: "record_container",
-        width: 18,
-      },
 
-      {
-        header: "recordOnContainer",
-        key: "record_on_container",
-        width: 24,
-      },
-      {
-        header: "recordHeading",
-        key: "record_heading",
-        width: 18,
-      },
-      {
-        header: "recordBodyText",
-        key: "record_body_text",
-        width: 18,
-      },
-      {
-        header: "neutral1",
-        key: "neutral_1",
-        width: 18,
-      },
-      {
-        header: "neutral2",
-        key: "neutral_2",
-        width: 18,
-      },
-      {
-        header: "neutral3",
-        key: "neutral_3",
-        width: 18,
-      },
-      {
-        header: "neutral4",
-        key: "neutral_4",
-        width: 18,
-      },
-      {
-        header: "neutral5",
-        key: "neutral_5",
-        width: 18,
-      },
-      {
-        header: "neutral6",
-        key: "neutral_6",
-        width: 18,
-      },
-      {
-        header: "neutral7",
-        key: "neutral_7",
-        width: 18,
-      },
-      {
-        header: "neutral8",
-        key: "neutral_8",
-        width: 18,
-      },
-      {
-        header: "headerIcon",
-        key: "header_icon",
-        width: 18,
-      },
-      {
-        header: "divider",
-        key: "divider",
-        width: 18,
-      },
-    ];
     sheet.getRow(3).height = 30;
     sheet.getRow(3).font = {
       name: "Times New Roman",
@@ -305,8 +179,10 @@ export const TableTheme: React.FC<IAppProps> = () => {
       horizontal: "left",
       wrapText: true,
     };
-    sheet.getRow(3).values = columns.map((item) => item.header);
-    sheet.columns = columns.map((item) => {
+    sheet.getRow(3).values = AppData.columnsExportDataTheme.map(
+      (item) => item.header
+    );
+    sheet.columns = AppData.columnsExportDataTheme.map((item) => {
       return {
         key: item.key,
         width: item.width,
@@ -314,6 +190,7 @@ export const TableTheme: React.FC<IAppProps> = () => {
     });
 
     sheet.addRow({
+      id: 1,
       name: "example",
       is_light: false,
       is_premium: true,
@@ -370,15 +247,25 @@ export const TableTheme: React.FC<IAppProps> = () => {
     });
   };
 
+  const [loadingImportFile, setLoadingImportFile] = useState<boolean>(false);
+  const [dialogTableTheme, SetDialogTableTheme] = useState<boolean>(false);
+  const [dataJsonFileTheme, setDataJsonFileTheme] = useState<TypeTheme[]>([]);
+
+  // import file excel
   const handleImport = async (event) => {
     const fileRes = event.target.files[0];
-
+    setLoadingImportFile(true);
     try {
-      const data = await utils.readFileExl(fileRes);
-      console.log("Data from Excel:", data);
+      const data: any = await utils.readFileExl(fileRes);
+      setDataJsonFileTheme(data);
+      if (data && data?.length > 0) {
+        SetDialogTableTheme(true);
+      }
     } catch (error) {
       console.error("Error:", error);
     }
+    setLoadingImportFile(false);
+    event.target.value = null;
   };
 
   return (
@@ -388,25 +275,35 @@ export const TableTheme: React.FC<IAppProps> = () => {
         data={AppData.dataFakeTheme}
         elementHeaderRight={
           <div className="flex gap-2">
-            <ButtonFullBg
-              className="rounded-2 bg-primary-main_light text-primary-main py-2"
-              onClick={() => {
-                handleExportExcel();
-              }}
-            >
-              Export sample file
-            </ButtonFullBg>
-            <div className="relative">
-              <ButtonFullBg className="rounded-2 bg-primary-main py-2 h-full">
-                Import File
-              </ButtonFullBg>
+            {AppData.dataFakeTheme?.length > 0 ? (
+              <div className="flex items-center gap-2">
+                <ButtonFullBg
+                  className="rounded-2 bg-primary-main_light text-primary-main py-2 h-full"
+                  onClick={() => {
+                    {
+                      !loadingImportFile ? handleExportExcel() : null;
+                    }
+                  }}
+                >
+                  Export sample file
+                </ButtonFullBg>
+                <div className="relative h-full">
+                  <ButtonFullBg className="rounded-2 bg-primary-main py-2 h-full flex items-center">
+                    Import File
+                    {loadingImportFile ? (
+                      <div className="border-gray-300 h-4 w-4 animate-spin rounded-full border-2 border-t-white ml-2" />
+                    ) : null}
+                  </ButtonFullBg>
 
-              <Input
-                type="file"
-                className="opacity-0 absolute top-0 left-0 right-0 bottom-0 cursor-pointer"
-                onChange={handleImport}
-              />
-            </div>
+                  <Input
+                    type="file"
+                    className="opacity-0 absolute top-0 left-0 right-0 bottom-0 cursor-pointer"
+                    onChange={handleImport}
+                  />
+                </div>
+              </div>
+            ) : null}
+
             <ButtonFullBg
               className="rounded-2 bg-primary-main py-2"
               onClick={() => {
@@ -423,6 +320,12 @@ export const TableTheme: React.FC<IAppProps> = () => {
         disabledPreviousPage={true}
         onNextPage={() => {}}
         onPreviousPage={() => {}}
+      />
+      <DialogTableThemeImport
+        open={dialogTableTheme}
+        onOpenChange={SetDialogTableTheme}
+        data={dataJsonFileTheme}
+        onCreate={() => {}}
       />
     </div>
   );

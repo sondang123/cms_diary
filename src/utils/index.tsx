@@ -1,4 +1,5 @@
 import ExcelJS from "exceljs";
+import * as XLSX from "xlsx";
 export const utils = {
   renderStatusTheme: (params: string) => {
     switch (params) {
@@ -15,38 +16,28 @@ export const utils = {
     }
   },
   readFileExl: async (file) => {
-    const workbook = new ExcelJS.Workbook();
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
-      reader.onload = (e) => {
-        const data = e.target.result;
-        const workbook = XLSX.read(data, { type: "buffer" });
-        workbook.SheetNames.forEach((sheetName) => {
-          let rowObject = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {
-            blankRows: false,
-            defval: "",
-          });
-          const dataHeaderTable = getHeaderSampleBatch();
+      reader.readAsArrayBuffer(file);
 
-          const headerFile = ContractHelper.get_header_row(
-            workbook.Sheets[sheetName]
-          );
-
-          const result = _.isEqual(dataHeaderTable, headerFile);
-
-          if (result === true) {
-            listFileBatch.push({ data: arrFile[i], type });
-          } else {
-            ToastHelper.showError("Tệp tải lên chưa đúng mẫu dữ liệu ");
-          }
-
-          resolve();
+      reader.onload = (e: any) => {
+        const binarystr = new Uint8Array(e.target.result);
+        const wb = XLSX.read(binarystr, {
+          type: "array",
+          raw: true,
+          cellFormula: false,
         });
+        const wsname = wb.SheetNames[0];
+        const data = XLSX.utils.sheet_to_json(wb.Sheets[wsname], {
+          header: 2,
+          range: 2,
+        });
+        resolve(data);
       };
-      reader.onerror = (e) => {
-        reject(e);
+
+      reader.onerror = (error) => {
+        reject(error);
       };
-      reader.readAsArrayBuffer(arrFile[i]);
     });
   },
 };

@@ -162,9 +162,7 @@ const dataField: TypeFieldTheme[] = [
 const transformedObject = dataField.reduce(
   (acc, cur) => {
     if (cur.name) {
-      acc[cur.name] = z.string().min(6, {
-        message: "must be at least 6 characters.",
-      });
+      acc[cur.name] = z.string();
     }
     return acc;
   },

@@ -248,4 +248,138 @@ export const AppData = {
       value: "false",
     },
   ],
+
+  columnsExportDataTheme: [
+    {
+      header: "id",
+      key: "id",
+      width: 20,
+    },
+    {
+      header: "name",
+      key: "name",
+      width: 20,
+    },
+    {
+      header: "is_light",
+      key: "is_light",
+      width: 18,
+    },
+    {
+      header: "is_premium",
+      key: "is_premium",
+      width: 18,
+    },
+    {
+      header: "primary",
+      key: "primary",
+      width: 18,
+    },
+    {
+      header: "gradient_start",
+      key: "gradient_start",
+      width: 18,
+    },
+    {
+      header: "gradient_end",
+      key: "gradient_end",
+      width: 18,
+    },
+    {
+      header: "on_primary",
+      key: "on_primary",
+      width: 18,
+    },
+    {
+      header: "background",
+      key: "background",
+      width: 18,
+    },
+    {
+      header: "glass",
+      key: "glass",
+      width: 18,
+    },
+    {
+      header: "glass_opacity",
+      key: "glass_opacity",
+      width: 18,
+    },
+    {
+      header: "record_dialog",
+      key: "record_dialog",
+      width: 18,
+    },
+    {
+      header: "record_container",
+      key: "record_container",
+      width: 18,
+    },
+
+    {
+      header: "record_on_container",
+      key: "record_on_container",
+      width: 24,
+    },
+    {
+      header: "recordHrecord_headingeading",
+      key: "record_heading",
+      width: 18,
+    },
+    {
+      header: "record_body_text",
+      key: "record_body_text",
+      width: 18,
+    },
+    {
+      header: "neutral_1",
+      key: "neutral_1",
+      width: 18,
+    },
+    {
+      header: "neutral_2",
+      key: "neutral_2",
+      width: 18,
+    },
+    {
+      header: "neutral_3",
+      key: "neutral_3",
+      width: 18,
+    },
+    {
+      header: "neutral_4",
+      key: "neutral_4",
+      width: 18,
+    },
+    {
+      header: "neutral_5",
+      key: "neutral_5",
+      width: 18,
+    },
+    {
+      header: "neutral_6",
+      key: "neutral_6",
+      width: 18,
+    },
+    {
+      header: "neutral_7",
+      key: "neutral_7",
+      width: 18,
+    },
+    {
+      header: "neutral_8",
+      key: "neutral_8",
+      width: 18,
+    },
+    {
+      header: "header_icon",
+      key: "header_icon",
+      width: 18,
+    },
+    {
+      header: "divider",
+      key: "divider",
+      width: 18,
+    },
+  ],
 };
