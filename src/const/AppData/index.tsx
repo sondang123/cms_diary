@@ -33,11 +33,11 @@ export const AppData = {
       subMenu: [
         {
           name: "Background",
-          path: "/category/background",
+          path: "/category/background-cate",
         },
         {
           name: "Sticker",
-          path: "/category/sticker",
+          path: "/category/sticker-cate",
         },
       ],
     },

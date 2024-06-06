@@ -7,9 +7,9 @@ import { AddBackgroundSticker } from "./CategoryStickerScreen/AddBackgroundStick
 export const CategoryScreen: React.FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="background" />} />
+      <Route path="/" element={<Navigate to="background-cate" />} />
       <Route
-        path="background"
+        path="background-cate"
         element={
           <>
             <BackGroundScreen />
@@ -17,7 +17,7 @@ export const CategoryScreen: React.FC = () => {
         }
       />
       <Route
-        path="background/add"
+        path="background-cate/add"
         element={
           <>
             <AddCategoryBackground title="Add Background Category" />
@@ -25,7 +25,7 @@ export const CategoryScreen: React.FC = () => {
         }
       />
       <Route
-        path="background/edit/:id"
+        path="background-cate/edit/:id"
         element={
           <>
             <AddCategoryBackground title="Edit Background Category" />
@@ -33,7 +33,7 @@ export const CategoryScreen: React.FC = () => {
         }
       />
       <Route
-        path="sticker"
+        path="sticker-cate"
         element={
           <>
             <CategoryStickerScreen />
@@ -41,7 +41,7 @@ export const CategoryScreen: React.FC = () => {
         }
       />
       <Route
-        path="sticker/add"
+        path="sticker-cate/add"
         element={
           <>
             <AddBackgroundSticker title="Add Background Sticker" />
@@ -49,7 +49,7 @@ export const CategoryScreen: React.FC = () => {
         }
       />
       <Route
-        path="sticker/edit/:id"
+        path="sticker-cate/edit/:id"
         element={
           <>
             <AddBackgroundSticker title="Edit Background Sticker" />

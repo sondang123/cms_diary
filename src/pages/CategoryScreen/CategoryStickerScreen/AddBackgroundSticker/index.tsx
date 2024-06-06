@@ -49,7 +49,7 @@ export const AddBackgroundSticker: React.FC<IProps> = ({
             <div
               className="p-2 border border-neutral-200 rounded-1.5 mr-4 cursor-pointer hover:opacity-80"
               onClick={() => {
-                navigate("/category/background");
+                navigate("/category/background-cate");
               }}
             >
               <svg
